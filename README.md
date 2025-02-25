@@ -10,3 +10,12 @@ Skyrock Fm Application
 
     chmod +x Skyrock.py
     python Skyrock.py
+
+
+![App Skyrock](https://github.com/user-attachments/assets/dffaf647-c995-425f-b227-419657ff8718)
+
+
+
+
+
+By Gunout 2025 . _____________________________________________
