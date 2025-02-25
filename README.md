@@ -8,5 +8,5 @@ Skyrock Fm Application
 
 # RUN 
 
-        chmod +x Skyrock.py
-        python Skyrock.py
+    chmod +x Skyrock.py
+    python Skyrock.py
