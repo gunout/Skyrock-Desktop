@@ -12,6 +12,16 @@ Skyrock Fm Application
     python Skyrock.py
 
 
+# RADIOS :
+
+1 . Skyrock Principale
+2 . Skyrock 100% Français
+3 . Skyrock La Nocturne
+4 . Skyrock PLM
+5 . Skyrock Hit US
+
+
+
 ![App Skyrock](https://github.com/user-attachments/assets/dffaf647-c995-425f-b227-419657ff8718)
 
 
