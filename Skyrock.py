@@ -187,13 +187,13 @@ class SkyrockRadioApp(Gtk.Window):
 
     def on_play_button_clicked(self, button):
         if not self.radio_playing:
-            # Démarrer la radio
+            # Démarrer la radio avec VLC
             station_name = self.station_combo.get_active_text()
             station_url = self.stations.get(station_name)
             if station_url:
                 try:
                     self.process = subprocess.Popen(
-                        ["mpv", f"--volume={int(self.volume_scale.get_value())}", station_url],
+                        ["vlc", "--intf", "dummy", "--no-video", "--volume", str(int(self.volume_scale.get_value())), station_url],
                         stdout=subprocess.PIPE, stderr=subprocess.PIPE
                     )
                     self.radio_playing = True
@@ -205,7 +205,7 @@ class SkyrockRadioApp(Gtk.Window):
                     self.monitor_thread = threading.Thread(target=self.monitor_process)
                     self.monitor_thread.start()
                 except Exception as e:
-                    self.show_error_message(f"Erreur : Impossible de démarrer mpv. {str(e)}")
+                    self.show_error_message(f"Erreur : Impossible de démarrer VLC. {str(e)}")
         else:
             # Arrêter la radio
             self.stop_radio()
@@ -214,7 +214,7 @@ class SkyrockRadioApp(Gtk.Window):
             self.play_sound("stop_sound.wav")  # Jouer un son d'arrêt
 
     def stop_radio(self):
-        """Arrête la radio en tuant le processus mpv."""
+        """Arrête la radio en tuant le processus VLC."""
         if self.process:
             try:
                 self.stop_monitoring = True  # Arrêter la surveillance
@@ -223,12 +223,12 @@ class SkyrockRadioApp(Gtk.Window):
             except subprocess.TimeoutExpired:
                 self.process.kill()  # Forcer l'arrêt si nécessaire
             except Exception as e:
-                self.show_error_message(f"Erreur : Impossible d'arrêter mpv. {str(e)}")
+                self.show_error_message(f"Erreur : Impossible d'arrêter VLC. {str(e)}")
             finally:
                 self.process = None
 
     def monitor_process(self):
-        """Surveille le processus mpv et le redémarre s'il s'arrête."""
+        """Surveille le processus VLC et le redémarre s'il s'arrête."""
         while not self.stop_monitoring:
             if self.process and self.process.poll() is not None:  # Si le processus s'est arrêté
                 if not self.stop_monitoring:  # Ne redémarrer que si l'arrêt n'est pas volontaire
