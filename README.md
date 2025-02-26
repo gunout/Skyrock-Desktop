@@ -3,8 +3,11 @@ Skyrock Fm Application
 
 # DEPENDANCES 
 
-    sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-3.0 mpv
-    pip install requests beautifulsoup4
+        requests==2.31.0
+        beautifulsoup4==4.12.2
+        PyGObject==3.44.1
+        python-vlc==3.0.18121
+
 
 # RUN 
 
