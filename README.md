@@ -8,6 +8,10 @@ Skyrock Fm Application
         PyGObject==3.44.1
         python-vlc==3.0.18121
 
+# PIP 
+
+        pip install -r requirements.txt
+
 
 # RUN 
 
