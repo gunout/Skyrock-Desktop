@@ -1,0 +1,4 @@
+requests==2.31.0
+beautifulsoup4==4.12.2
+PyGObject==3.44.1
+python-vlc==3.0.18121
